@@ -1,4 +1,4 @@
-````markdown
+
 # 🎯 CS2 Logitech No Recoil
 
 ![Logitech G Hub](img/logitech_logo.png)
@@ -128,5 +128,5 @@ end
 ---
 
 💡 **Enjoy enhanced aim and recoil control in CS2!** 🎯🔥
-````
+
 
