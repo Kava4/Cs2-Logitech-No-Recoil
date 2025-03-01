@@ -1,114 +1,132 @@
+````markdown
 # 🎯 CS2 Logitech No Recoil
 
-![Logitech G Hub](https://upload.wikimedia.org/wikipedia/en/6/64/Logitech_logo.svg)
+![Logitech G Hub](img/logitech_logo.png)
 
-A **Logitech G Hub** macro script for **CS2** that provides **no-recoil functionality** for the M4A4, M4A1-S, and AK-47. Enhance your aim and control while utilizing Logitech's scripting environment.
+> **Dominate CS2 with precision!** This Logitech G Hub macro script provides **no-recoil functionality** for M4A4, M4A1-S, and AK-47, enhancing your aim while keeping things smooth and effortless. 🏆
+
+---
+
+## 📜 Table of Contents
+- [🎥 Before & After Comparison](#-before--after-comparison)
+- [✨ Features](#-features)
+- [⚙️ Requirements](#-requirements)
+- [🚀 Installation & Setup](#-installation--setup)
+  - [1️⃣ Install Logitech G Hub](#1️⃣-install-logitech-g-hub)
+  - [2️⃣ Prepare the Lua Script](#2️⃣-prepare-the-lua-script)
+  - [3️⃣ Configure Logitech G Hub](#3️⃣-configure-logitech-g-hub)
+  - [4️⃣ Customize Key Bindings](#4️⃣-customize-key-bindings)
+  - [5️⃣ Test the Setup](#5️⃣-test-the-setup)
+- [🎨 Customization Guide](#-customization-guide)
+  - [🎛️ Dynamic Sensitivity Adjustment](#-dynamic-sensitivity-adjustment)
+- [🛠️ Troubleshooting](#-troubleshooting)
+- [🔍 Common Fixes](#-common-fixes)
+- [📜 License](#-license)
+
+---
+
+## 🎥 Before & After Comparison
+
+See the difference this script makes! 👇
+
+<div align="center">
+  <img src="img/before.png" width="45%"> 
+  <img src="img/after.png" width="45%">
+</div>
+
+*Left: Without Script ❌ | Right: With Script ✅*
 
 ---
 
 ## ✨ Features
 
-- **No recoil** for M4A4, M4A1-S, and AK-47
-- **Compatible with Logitech G Hub** (G-Series Mice)
-- **Toggleable recoil compensation**
-- **Precise fractional movement** for improved accuracy
-- **Customizable key bindings**
+✔️ **No recoil** for M4A4, M4A1-S, and AK-47  
+✔️ **Logitech G Hub compatibility** (G-Series Mice)  
+✔️ **Toggleable recoil compensation** 🎭  
+✔️ **Precise fractional movement** for improved accuracy 🎯  
+✔️ **Customizable key bindings** 🔧  
+
+> 📝 **Note:** This script was created and optimized for **1.5 in-game sensitivity**. If you use a different sensitivity, adjustments may be required.
 
 ---
 
-## ⚙️ Requirements
+## 🎨 Customization Guide
 
-- **Logitech G-Series Mouse** (compatible with G Hub)
-- **Logitech G Hub software** installed
-- **Windows OS**
-
----
-
-## 🚀 Installation & Setup
-
-### 1️⃣ Install Logitech G Hub
-
-1. **Download G Hub**: [Logitech G Hub Download](https://download01.logi.com/web/ftp/pub/techsupport/gaming/lghub_installer.exe)
-2. **Run the Installer**: Open the downloaded file and follow the on-screen instructions.
-3. **Verify Installation**: Launch Logitech G Hub to ensure it's installed correctly.
-
-*Note*: Ensure your G Hub is updated to the latest version. To check the version:
-
-- Open **Logitech G Hub**.
-- Click on the **Settings** icon.
-- The version number is displayed at the bottom.
-
-![G Hub Version](https://example.com/ghub_version_image.png)
-
-### 2️⃣ Prepare the Lua Script
-
-1. **Download the Script**: Obtain the `CS2_Logitech_No_Recoil.lua` script from this repository.
-2. **Save the Script**: Place the script in a dedicated folder on your local drive. Avoid using names like "hack" or "cheat" for the folder or file to prevent potential issues.
-
-### 3️⃣ Configure Logitech G Hub
-
-1. **Open G Hub**: Launch the Logitech G Hub application.
-2. **Access Profiles**: Click on the **Profile** section.
-
-   ![G Hub Profiles](https://example.com/ghub_profiles_image.png)
-
-3. **Open Scripting**: In the bottom left corner, click on **Scripting**.
-
-   ![G Hub Scripting](https://example.com/ghub_scripting_image.png)
-
-4. **Create a New Lua Script**: Press the blue **Create a new Lua Script** button.
-
-   ![G Hub New Script](https://example.com/ghub_new_script_image.png)
-
-5. **Import the Script**:
-   - Click on **Script** > **Import**.
-   - Navigate to the location where you saved the `CS2_Logitech_No_Recoil.lua` script and select it.
-
-6. **Assign the Script to a Profile**: Ensure the script is assigned to the CS2 profile or create a new profile for CS2 and assign the script accordingly.
-
-### 4️⃣ Customize Key Bindings
-
-Modify the script to match your preferred mouse buttons:
+🔧 **Adjusting Sensitivity Compensation**
+- The script is optimized for **1.5 in-game sensitivity**.
+- If using a different sensitivity, adjust the `mult` variable:
 
 ```lua
-local M4A4 = 4  -- Change to your desired mouse button
-local AK47 = 5  -- Change to your desired mouse button
-local M4A1s = 6 -- Change to your desired mouse button
+local mult = 1.33 -- Default multiplier for recoil compensation
+```
+- Lower values = **Less recoil compensation** 🔽
+- Higher values = **More recoil compensation** 🔼
 
-Note: The numbers correspond to the mouse button IDs in Logitech G Hub.
+🖱️ **Changing Mouse Buttons**
+- If you want to assign different keys for activation, modify:
 
-5️⃣ Test the Setup
+```lua
+local M4A4 = 4  -- Change this to your preferred button
+local AK47 = 5  -- Change this to your preferred button
+local M4A1s = 6 -- Change this to your preferred button
+```
+- Find button IDs in Logitech G Hub's key assignment menu.
 
-Save the Script: Ensure all changes are saved in Logitech G Hub.
+🎛️ **Dynamic Sensitivity Adjustment**
+- Instead of manually changing values, you can **increase or decrease recoil compensation while playing**.
+- Assign **G8** and **G9** buttons to **fine-tune recoil strength** dynamically:
 
-Launch CS2: Open the game and select one of the supported weapons.
+```lua
+if (event == "G_PRESSED" and arg == 8) then -- Press G8 to increase recoil comp
+    mult = mult + 0.05
+    OutputLogMessage("Increased Recoil Compensation: " .. mult .. "\n")
+end
+if (event == "G_PRESSED" and arg == 9) then -- Press G9 to decrease recoil comp
+    mult = mult - 0.05
+    OutputLogMessage("Decreased Recoil Compensation: " .. mult .. "\n")
+end
+```
+- This lets you **test different sensitivities instantly** without restarting the script!
 
-Activate the Script: Press the assigned mouse button to toggle the no-recoil function.
+---
 
-Verify Functionality: The recoil should now be compensated automatically.
+## 🔍 Common Fixes
 
-🛠️ Troubleshooting
+🛠 **Script Not Working?**
+- Ensure **Logitech G Hub** is installed and running.
+- Make sure **Lua scripting** is enabled in Logitech G Hub.
+- Assign the script to the **correct CS2 profile**.
+- Try running **G Hub as administrator**.
 
-Script Not Working?
+⚡ **Recoil Feels Off?**
+- Adjust the `mult` variable in the script for fine-tuning:
+  ```lua
+  local mult = 1.33 -- Increase or decrease this value for recoil control
+  ```
+- Ensure your **in-game sensitivity** matches the recommended settings (1.5 default).
+- Test different **mouse DPI settings**.
 
-Ensure Lua scripting is enabled in Logitech G Hub.
+🎮 **Script Not Triggering?**
+- Verify that the **assigned mouse button** is correct:
+  ```lua
+  local M4A4 = 4  -- Change this to your preferred button
+  ```
+- Check if your **mouse software (e.g., G Hub) is up to date**.
+- Make sure no **other macros are interfering**.
 
-Verify that the script is assigned to the correct profile.
+🔄 **Logitech G Hub Not Detecting Script?**
+- Restart **Logitech G Hub**.
+- Reinstall **Logitech G Hub** if the issue persists.
+- Delete and **re-import the script**.
 
-Check for typos or errors in the script.
+---
 
-Recoil Feels Off?
+## 📜 License
 
-Adjust the mult variable in the script for fine-tuning.
+🆓 **Open-source & free to use** – Provided as-is without warranties. Use responsibly!
 
-Ensure your in-game sensitivity matches the settings used during script calibration.
+---
 
-Using a Different Mouse?
+💡 **Enjoy enhanced aim and recoil control in CS2!** 🎯🔥
+````
 
-This script is designed for Logitech G Hub-compatible mice. Compatibility with other models is not guaranteed.
-
-📜 License
-
-This project is open-source and provided as-is without warranties. Use responsibly!
-
-💡 Enjoy enhanced aim and recoil control in CS2! 🎯🔥
