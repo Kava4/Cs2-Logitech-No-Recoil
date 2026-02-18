@@ -3,67 +3,81 @@
 
 ![Logitech G Hub](img/logitech_logo.png)
 
-> **Dominate CS2 with precision!** This Logitech G Hub macro script provides **no-recoil functionality** for M4A4, M4A1-S, and AK-47, enhancing your aim while keeping things smooth and effortless. 🏆
+> Lua macro script for Logitech G Hub that applies configurable recoil compensation for **M4A4**, **M4A1-S**, and **AK-47** with weapon-specific logic and precision mouse movement based on your in-game sensitivity.
+
 
 ---
 
-## 📜 Table of Contents
-- [🎥 Before & After Comparison](#-before--after-comparison)
-- [✨ Features](#-features)
-- [⚙️ Requirements](#-requirements)
-- [🚀 Installation & Setup](#-installation--setup)
-  - [1️⃣ Install Logitech G Hub](#1️⃣-install-logitech-g-hub)
-  - [2️⃣ Prepare the Lua Script](#2️⃣-prepare-the-lua-script)
-  - [3️⃣ Configure Logitech G Hub](#3️⃣-configure-logitech-g-hub)
-  - [4️⃣ Customize Key Bindings](#4️⃣-customize-key-bindings)
-  - [5️⃣ Test the Setup](#5️⃣-test-the-setup)
-- [🎨 Customization Guide](#-customization-guide)
-  - [🎛️ Dynamic Sensitivity Adjustment](#-dynamic-sensitivity-adjustment)
-- [🛠️ Troubleshooting](#-troubleshooting)
-- [🔍 Common Fixes](#-common-fixes)
-- [📜 License](#-license)
+## 📦 Overview
 
----
+This script runs inside Logitech G Hub’s Lua environment and provides:
 
-## 🎥 Before & After Comparison
+- Toggleable recoil compensation per weapon  
+- Fractional mouse movement for smoother spray control  
+- Adjustable sensitivity scaling  
+- Configurable weapon buttons  
+- Runtime recoil strength tuning  
+- Optional RGB feedback per weapon state 
 
-See the difference this script makes! 👇
-
-<div align="center">
-  <img src="img/before.png" width="45%"> 
-  <img src="img/after.png" width="45%">
-</div>
-
-*Left: Without Script ❌ | Right: With Script ✅*
 
 ---
 
 ## ✨ Features
 
-✔️ **No recoil** for M4A4, M4A1-S, and AK-47  
-✔️ **Logitech G Hub compatibility** (G-Series Mice)  
-✔️ **Toggleable recoil compensation** 🎭  
-✔️ **Precise fractional movement** for improved accuracy 🎯  
-✔️ **Customizable key bindings** 🔧  
-
-> 📝 **Note:** This script was created and optimized for **1.5 in-game sensitivity**. If you use a different sensitivity, adjustments may be required.
+- Per-weapon recoil profiles  
+- Toggle activation system (not hold-to-fire macros)  
+- Precision rounding compensation algorithm  
+- Sensitivity-scaled recoil math  
+- Low jitter movement output  
+- Extendable weapon logic system
+- Adjust your in-game sensitivity with this line ```local InGameSens = 1```
+- Works with every **DPI**
 
 ---
+## ⏱ Timing Engine
+
+
+Instead of Sleep(), a custom delay loop is used:
+```
+function kava(time)
+    local t = GetRunningTime() + time
+    while GetRunningTime() < t do
+        Sleep(1)
+    end
+end
+```
+
+This maintains timing accuracy while avoiding 100% CPU load.
+
+---
+
+## Installation **(PAY ATTENTION!)**
+
+- Download world.lua file
+- Keep it on the **ROOT** of you drive (for example **D:**)
+- Open GHub as **Admin**
+- Go to Profiles and find counter strike (**Not 2 but global offensive**)
+- On **Default** profile click the dots and **Create Lua Script**
+- Add inside the ```data = dofile[[D:\world.lua]]``` **Change it tou where your lua is. If its on C: ```data = dofile[[C:\world.lua]]```**
+- Click **Script** then ** Save & Run**
+- You will see **LOADED** on the console
+- If not repeat the steps line by line
 
 ## 🎨 Customization Guide
 
 🔧 **Adjusting Sensitivity Compensation**
-- The script is optimized for **1.5 in-game sensitivity**.
-- If using a different sensitivity, adjust the `mult` variable:
+- If using a different sensitivity, adjust the `InGameSens` variable:
 
-```lua
-local mult = 1.33 -- Default multiplier for recoil compensation
 ```
-- Lower values = **Less recoil compensation** 🔽
-- Higher values = **More recoil compensation** 🔼
+local InGameSens = 1   --means in-game sensitivity = 1
+```
+If you have for example 1.5 in-game sensitiviy
+```lua
+local InGameSens = 1.5
+```
 
 🖱️ **Changing Mouse Buttons**
-- If you want to assign different keys for activation, modify:
+- If you want to assign different keys for activation, modify the number:
 
 ```lua
 local M4A4 = 4  -- Change this to your preferred button
@@ -72,21 +86,6 @@ local M4A1s = 6 -- Change this to your preferred button
 ```
 - Find button IDs in Logitech G Hub's key assignment menu.
 
-🎛️ **Dynamic Sensitivity Adjustment**
-- Instead of manually changing values, you can **increase or decrease recoil compensation while playing**.
-- Assign **G8** and **G9** buttons to **fine-tune recoil strength** dynamically:
-
-```lua
-if (event == "G_PRESSED" and arg == 8) then -- Press G8 to increase recoil comp
-    mult = mult + 0.05
-    OutputLogMessage("Increased Recoil Compensation: " .. mult .. "\n")
-end
-if (event == "G_PRESSED" and arg == 9) then -- Press G9 to decrease recoil comp
-    mult = mult - 0.05
-    OutputLogMessage("Decreased Recoil Compensation: " .. mult .. "\n")
-end
-```
-- This lets you **test different sensitivities instantly** without restarting the script!
 
 ---
 
@@ -94,17 +93,10 @@ end
 
 🛠 **Script Not Working?**
 - Ensure **Logitech G Hub** is installed and running.
-- Make sure **Lua scripting** is enabled in Logitech G Hub.
 - Assign the script to the **correct CS2 profile**.
-- Try running **G Hub as administrator**.
+- Try running **G Hub as administrator**.  **THIS IS A MUST**.
 
-⚡ **Recoil Feels Off?**
-- Adjust the `mult` variable in the script for fine-tuning:
-  ```lua
-  local mult = 1.33 -- Increase or decrease this value for recoil control
-  ```
-- Ensure your **in-game sensitivity** matches the recommended settings (1.5 default).
-- Test different **mouse DPI settings**.
+- Ensure your **in-game sensitivity** matches the ```local InGameSens``` (1 default).
 
 🎮 **Script Not Triggering?**
 - Verify that the **assigned mouse button** is correct:
@@ -128,5 +120,4 @@ end
 ---
 
 💡 **Enjoy enhanced aim and recoil control in CS2!** 🎯🔥
-
 
