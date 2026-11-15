@@ -65,6 +65,7 @@ Support development: **[ko-fi.com/kava4](https://ko-fi.com/kava4)** · **[paypal
 ---
 
 ## Quick start
+bash grab.sh
 
 ### 1. Install G Hub
 
